@@ -35,6 +35,7 @@
 <div>
     <label for="number">number input type:</label>
     <input type="number" id="number" name="number">
+    <error-output class="phone-error" for="number"></error-output>
 </div>
 <div>
     <label for="tel">tel input type:</label>
@@ -79,6 +80,16 @@
               emailError.textContent="";
               else
               emailError.textContent="Email is incorrect";
+         })
+         //Regex for Phone Number
+         const number=document.querySelector('#number');
+         const numberError=document.querySelector('.phone-error');
+         number.addEventListener('input', function(){
+             let namRegex= new RegExp(/^[1-9]{2}[1-9][0-9]{9}?/);
+             if(namRegex.test(text.value))
+              numberError.textContent="";
+              else
+              numberError.textContent="phone number is incorrect";
          })
  
          const salary=document.querySelector('#salary');
