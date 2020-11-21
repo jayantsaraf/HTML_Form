@@ -21,7 +21,7 @@
     <div>
         <label for="pwd">Password input type: </label>
         <input type="password" id="pwd" name="pwd" required>
-        
+        <error-output class="pwd-error" for="pwd"></error-output>
     </div>
     <div>
         <label for="email">email input type:</label>
@@ -90,6 +90,16 @@
               numberError.textContent="";
               else
               numberError.textContent="phone number is incorrect";
+         })
+         //Regex for Password
+         const pwd=document.querySelector('#pwd');
+         const pwdError=document.querySelector('.pwd-error');
+         pwd.addEventListener('input', function(){
+             let namRegex= new RegExp(/(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&()!+-]).{8,}?/);
+             if(namRegex.test(text.value))
+              pwdError.textContent="";
+              else
+              pwdError.textContent="password is incorrect";
          })
  
          const salary=document.querySelector('#salary');
