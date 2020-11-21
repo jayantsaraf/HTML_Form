@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basic input types</title>
-    <link rel="stylesheet" href="../css/simple_form.css">
+    
+        <link rel="stylesheet" href="..\css\simple_form.css">
+   
+    
  
 </head>
 <body>
@@ -18,10 +21,12 @@
     <div>
         <label for="pwd">Password input type: </label>
         <input type="password" id="pwd" name="pwd" required>
+        
     </div>
     <div>
         <label for="email">email input type:</label>
         <input type="email" id="email" name="email">
+        <error-output class="email-error" for="email"></error-output>
     </div>
    <div>
        <label for="url">url input type:</label>
@@ -55,7 +60,7 @@
         </div>
     </form>
     <script>
-         
+         //Regex for User name
          const text=document.querySelector('#text');
          const textError=document.querySelector('.text-error');
          text.addEventListener('input', function(){
@@ -65,7 +70,16 @@
               else
               textError.textContent="Name is incorrect";
          })
- 
+         //Regex for Email
+         const email=document.querySelector('#email');
+         const emailError=document.querySelector('.email-error');
+         email.addEventListener('input', function(){
+             let namRegex= new RegExp(/^[a-z0-9A-Z]+([._+-][a-z0-9A-Z]+)*[@][a-z0-9A-Z]+[.][a-zA-Z]{2,3}(.[a-zA-Z]{2})?$/);
+             if(namRegex.test(text.value))
+              emailError.textContent="";
+              else
+              emailError.textContent="Email is incorrect";
+         })
  
          const salary=document.querySelector('#salary');
          const output=document.querySelector('.salary-output');
